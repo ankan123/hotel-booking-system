@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>User's list</h1>
+  <div id="wrap">
+    <div class="container clear-top">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Phone-Number</th>           
+            <th></th>           
+          </tr>
+        </thead>
+        <% @users.each do |user|%>
+          <tr>
+            <td><%= user.email %></td>
+            <td><%= user.username %></td>
+            <td><%= user.number %> </td>
+            <td> <%= link_to 'bookings', userlist_userbooking_path(:id => user.id) %> </td>
+            
+         </tr>  
+        <%end%>
+      </table>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+</div>
+
+
+

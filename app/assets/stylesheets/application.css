@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap-datepicker
+ */
+
+ html{
+    position:relative; 
+    min-height: 100%;
+  }
+
+  .shared-links{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shared-links>a{
+      margin-bottom: 11px;
+  }
+
+  .container{
+      margin-bottom: 50px;
+  }
+
+  .accept-reject{
+      display: flex;
+  }
+
+  .navbar-container{
+      margin-bottom: 0;
+  }
+
+ .navbar{
+     background-color: #003399 !important;
+     padding-top: 0 !important;
+     padding-bottom: 0 !important;
+     margin-bottom: 20px;
+ }
+
+ .navbar-brand>img{
+    height: 55px;
+  }
+
+  .nav-item,.nav-item>a{
+      color: white !important;
+      margin-left: 20px;
+  }
+
+  .nav-item>a:hover{
+    color: rgb(218, 213, 213) !important;
+}
+
+footer {
+    background-color : #003399 ;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding : 13px 0;
+    font-size : 13px;
+    text-align : center;
+    color : white;
+    
+}

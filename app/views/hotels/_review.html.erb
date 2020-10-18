@@ -1,0 +1,14 @@
+<%= form_with(model: [ @hotel, @hotel.ratings.build ], local: true) do |form| %>
+                <div class="form-group">
+                  <%= form.label :ratings %>
+                  <em>(1-5)</em><br>
+                  <%= form.number_field :rating, :class => 'form-control', :required => 'true', :min => 1, :max => 5 %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :comment %><br>
+                  <%= form.text_field :comment, :class => 'form-control', :required => 'true' %>
+                </div>
+                <div class="form-group">
+                  <%= form.submit 'add comment', :class => 'btn btn-primary' %>
+                </div>
+<% end %>

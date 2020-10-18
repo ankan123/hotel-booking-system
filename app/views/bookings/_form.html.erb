@@ -1,0 +1,128 @@
+<div class="card booking-form-card">
+  <div class="card-body"> 
+    <% if @available %>
+      <%= form_with(model: @booking, local: true) do |form| %>
+
+        <% if flash[:booking_errors] %>
+            <% flash[:booking_errors].each do |msg| %>
+              <div class="alert alert-danger" role="alert">
+                <%= msg %>
+              </div>
+            <% end %>              
+        <% end %>
+        <div class="details">
+        <p class="text-center"> Book rooms for <%=@days%> days <%=@days-1%> night stay at <%=@hotel_name%>!!!</p>        
+          <div class="row">
+            <div class="col">
+              Check-In date: <%= params[:check_in] %>
+            </div>
+            <div class="col">
+              Check-Out date: <%= params[:check_out] %>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group booking-dates">
+              <%= form.label :check_in %>
+              <%= form.date_field :check_in_date, :value => params[:check_in], :class => 'form-control', :required => 'true'  %>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group booking-dates">
+              <%= form.label :check_out %>
+              <em>(6 months in advance)</em>
+              <%= form.date_field :check_out_date, :value => params[:check_out], :class => 'form-control', :required => 'true'  %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= form.hidden_field :hotel_id, :value => params[:hotel_id] %>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :guest_name %>
+              <%= form.text_field :guest_name, :class => 'form-control', :required => 'true' %>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :number_of_guest %>
+              <%= form.number_field :no_of_guest, :class => 'form-control', :required => 'true', :min => 1  %>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+          <p class="text-center">Enter number of rooms as per your desired room type</p>        
+          <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :single_bed %>
+              <em>
+                <% if @single_room_left>0 %>
+                  (<%= @single_room_left %> rooms left)
+                <% else %>
+                  ( Unavailable )
+                <% end %>
+              </em>     
+              <%= form.number_field :single_bed_room, :class => 'form-control',  :required => 'true', :max => @single_room_left, :min => 0 %>
+            </div>
+          </div> 
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :double_bed %>
+              <em>
+                <% if @double_room_left>0 %>
+                  (<%= @double_room_left %> rooms left)
+                <% else %>
+                  ( Unavailable )
+                <% end %>
+              </em>
+              <%= form.number_field :double_bed_room, :class => 'form-control', :required => 'true', :max => @double_room_left, :min => 0 %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :suite_room %>
+              <em>
+                <% if @suite_room_left>0 %>
+                  (<%= @suite_room_left %> rooms left)
+                <% else %>
+                  ( Unavailable )
+                <% end %>
+              </em>
+              <%= form.number_field :suite_room, :class => 'form-control', :required => 'true', :max => @suite_room_left, :min => 0 %>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :dormitory %>
+              <em>
+                <% if @dormitory_left>0 %>
+                  (<%= @dormitory_left %> rooms left)
+                <% else %>
+                  ( Unavailable )
+                <% end %>
+              </em> 
+              <%= form.number_field :dormitory, :class => 'form-control', :required => 'true', :max => @dormitory_left, :min => 0 %>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit "BOOK NOW", data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary'%>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center">Sorry!!! Rooms are not available between these dates.  </p>
+    <%end%>
+  </div>
+</div>

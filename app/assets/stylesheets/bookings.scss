@@ -1,0 +1,64 @@
+// Place all the styles related to the bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.card-body>h5{
+    color: rgb(24, 204, 24);
+}
+
+.form-group>em{
+    color: red;
+    font-size: 0.9rem;
+}
+
+.room-details{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.booking-form-card{
+    max-width: 530px !important;
+}
+
+#wrap{
+    margin-top: 20px;
+}
+
+.pagination{
+    justify-content: center;
+}
+
+.äccepted{
+    color: green;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-right: 2px;
+}
+
+.accept-button{
+    margin-right: 12px;
+}
+
+.üser-accept-status{
+    color: green;
+    font-weight: bold;
+}
+
+.üser-pending-status{
+    color: red;
+    font-weight: bold;
+}
+
+.booking-dates{
+    display: none;
+}
+
+.details{
+    font-weight: bold;
+    color: rgb(24, 204, 24);
+}
+
+.check-availability-div{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

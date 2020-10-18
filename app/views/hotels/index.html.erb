@@ -1,0 +1,41 @@
+<div class="container">
+    
+    <%= render 'hotels/search' %>
+
+    <% @hotels.each do |hotel| %>
+        <div class="card text-center hotel-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm side-image">
+                <%= image_tag(hotel.images[0]) %>
+              </div>
+              <div class="col-sm">
+                  <h4 class="text-left card-title"><%= hotel.name %></h4>
+                  <h6 class="text-left card-subtitle mb-2 text-muted"><%= hotel.location %></h6>
+                  <p class="text-left"><%= hotel.details[0..37] %>...</p>
+                  <br>
+                      <div class="row">
+                      <div class="col-sm">
+                        <p>
+                          Price per room: Rs. <%= hotel.price %>
+                        </p>
+                      </div>
+                      <div class="col-sm">
+                        <p>
+                          <%= link_to 'Show', hotel, :class => 'btn btn-success btn-sm' %>
+                            <% if current_user && current_user.admin %>
+                                <%= link_to 'Edit', edit_hotel_path(hotel), :class => 'btn btn-primary btn-sm'  %>
+                                <%= link_to 'Delete', hotel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %>
+                            <% end %>
+                        </p>
+                      </div>
+                    </div>
+              </div>
+              </div>
+            </div>
+          </div>
+       
+    <% end %>
+
+</div>
+

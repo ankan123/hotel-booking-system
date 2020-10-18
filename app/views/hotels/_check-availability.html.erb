@@ -1,0 +1,27 @@
+  <% if flash[:dates_errors] %>
+     <% flash[:dates_errors].each do |msg| %>
+        <div class="alert alert-danger error-alert" role="alert">
+         <%= msg %>
+        </div>
+    <% end %>              
+  <% end %>
+
+ <div class="container check-availability-div">
+                <h3>Check Availability</h3>
+                
+                <%= form_tag new_booking_path, :class => "form-inline" ,:method => 'get' do %>
+                
+                  <div class="form-group mx-sm-1 mb-2">                              
+                    <%= hidden_field_tag :hotel_id,  @hotel.id %> 
+                  </div> 
+                  <div class="form-group mx-sm-1 mb-2"> 
+                    Check-in :          
+                    <%= date_field_tag :check_in, params[:check_in], :placeholder => "Check-In" %> 
+                  </div>                
+                  <div class="form-group mx-sm-1 mb-2">           
+                    Check-out :
+                    <%= date_field_tag :check_out, params[:check_out], :placeholder => "Check-Out" %> 
+                  </div>
+                  <%= submit_tag "Check Availability", :class => "btn btn-primary mb-2 btn-sm" %>
+                <% end %> 
+ </div>

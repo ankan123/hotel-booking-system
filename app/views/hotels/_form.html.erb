@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body"> 
+      <%= form_with(model: hotel, local: true) do |form| %>
+        <% if hotel.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
+
+            <ul>
+              <% hotel.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, :class => 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :location %>
+          <%= form.text_field :location, :class => 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :details %>
+          <%= form.text_area :details, :class => 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :price %>
+          <%= form.number_field :price, :min => 1, :class => 'form-control' %>
+        </div>
+
+        <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= form.label :single_bed_room %>
+            <%= form.number_field :single_bed_room, :min => 1,  :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= form.label :double_bed_room %>
+            <%= form.number_field :double_bed_room, :min => 1, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= form.label :suite_room %>
+            <%= form.number_field :suite_room, :min => 1, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= form.label :dormitory %>
+            <%= form.number_field :dormitory,:min => 1, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <%= form.check_box :refrigetator, {}, true, false %> : REFRIGERATOR<br>
+      
+      <%= form.check_box :tv, {}, true, false %> : TV<br>
+      
+      <%= form.check_box :geyser, {}, true, false %> : GEYSER<br>
+      
+      <%= form.check_box :heater, {}, true, false %> : HEATER<br>
+      
+      <%= form.check_box :ac, {}, true, false %> : AC<br>
+      
+
+        <div class="form-group">
+          <%= form.label :add_images %>
+          <%= form.file_field :images, multiple: true,  :class => 'form-control'  %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit name: button_name, :class => 'btn btn-primary'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

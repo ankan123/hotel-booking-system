@@ -1,0 +1,18 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.display-hotel-card{
+    height: 368px;
+    width: 250px;
+}
+
+.display-hotel-card:hover{
+    box-shadow: 3px 3px 5px black;
+    background-color: rgb(248, 245, 245);
+    transition: 0.1s ease-in;
+}
+
+.display-hotel-card>img{
+    height: 180px;
+}

@@ -1,0 +1,85 @@
+// Place all the styles related to the hotels controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.card{
+    max-width: 450px;
+    margin: 20px auto ;
+}
+
+.display-rooms{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.search-form{
+    max-width: 1100px;
+    margin: 20px auto ;
+}
+
+
+.show-hotel-card{
+    max-width: 1000px !important;
+    margin: 20px auto ;
+}
+
+.carousel{
+    margin: 20px auto;
+}
+
+.carousel-item>img{
+    height: 400px;
+}
+
+.hotel-card{
+    max-width: 800px !important;
+    margin: 20px auto ;
+}
+
+.textbox-n{
+    width: 160px !important;
+} 
+
+.room-available{
+    color: green;
+}
+
+.room-not-available{
+    color: red;
+}
+
+.side-image>img{
+    height: 190px;
+    width: 310px;
+}
+
+.sign-in-to-book-room{
+    color: red !important;
+}
+
+.hotel-card:hover{
+    box-shadow: 3px 3px 5px black;
+    background-color: rgb(248, 245, 245);
+    transition: 0.1s ease-in;
+}
+
+.review-card{
+    background-color: #e2e1e1 !important;
+    max-width: 100%;
+}
+
+.review-card>div>p{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-card>div>a{
+    float: right;
+}
+
+.error-alert{
+    width: 65%;
+    margin: 7px auto;
+}
+

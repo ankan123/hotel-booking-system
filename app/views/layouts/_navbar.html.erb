@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container navbar-container">
+        <a class="navbar-brand" href="/">
+           <img src="/assets/index.png" class="d-inline-block align-top" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+          <% if current_user %>
+            <% if current_user.admin %>
+              <li class="nav-item">Logged in as Admin</li>
+              <li class="nav-item"><%= link_to 'All Users', userlist_index_path %></li>
+              <li class="nav-item"><%= link_to 'All bookings', booking_bookinglist_path %></li>
+              <li class="nav-item"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li class="nav-item">Logged in as <%= current_user.email %></li>
+              <li class="nav-item"><%= link_to 'My bookings', booking_bookinglist_path %></li>
+              <li class="nav-item"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <% end %>
+        <% else %>
+            <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li class="nav-item"><%= link_to 'Sign In', new_user_session_path %></li>
+        <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+
+

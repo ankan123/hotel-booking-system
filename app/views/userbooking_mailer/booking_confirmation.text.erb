@@ -1,0 +1,35 @@
+       <h6 class="text-center">BOOKING DETAILS</h6>
+
+        <p class="text-center"> Hotel Name : <%= @booking.hotel.name %></p>
+        <p class="text-center"> Hotel Name : <%= @booking.hotel.location %></p>
+        <p class="text-center">Guest name : <%= @booking.guest_name %> </p>
+        <p class="text-center">Number of Guest : <%= @booking.no_of_guest %> </p>
+         Room details:
+        <div class="room-details">
+          <% if @booking.single_bed_room > 0 %>
+            <p class="text-center">single bed room : <%= @booking.single_bed_room %> </p>
+          <% end %>
+          <% if @booking.double_bed_room > 0 %>
+            <p class="text-center">double bed room : <%= @booking.double_bed_room %> </p>
+          <% end %>
+          <% if @booking.suite_room > 0 %>
+            <p class="text-center">suite room : <%= @booking.suite_room %> </p>
+          <% end %>
+          <% if @booking.dormitory> 0 %>
+            <p class="text-center">dormitory : <%= @booking.dormitory %> </p>
+          <% end %>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm">
+              <p class="text-center">
+                Check-in-date : <%= @booking.check_in_date %>
+              </p>
+            </div>
+            <div class="col-sm">
+              <p class="text-center">
+                Check-out-date : <%= @booking.check_out_date %>
+              </p>
+            </div>
+          </div>
+

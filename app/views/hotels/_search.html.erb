@@ -1,0 +1,47 @@
+<div class="card search-form">
+  <div class="card-body"> 
+    <%= form_tag hotels_path, :class => "form-inline" ,:method => 'get' do %> 
+    <div class="form-group mx-sm-1 mb-2">           
+      <%= text_field_tag :city, params[:city], :placeholder => "city", :class => "textbox-n" %> 
+    </div>                
+    <div class="form-group mx-sm-1 mb-2"> 
+        Check-in :          
+      <%= date_field_tag :check_in, :placeholder => "Check-In" %> 
+    </div>                
+    <div class="form-group mx-sm-1 mb-2">           
+      Check-out :
+      <%= date_field_tag :check_out, :placeholder => "Check-Out" %> 
+    </div> 
+    <div class="form-group mx-sm-1 mb-2"> 
+      Rooms:          
+      <%= number_field_tag :room, params[:room], :value => 0, :class => "textbox-n" %> 
+    </div>
+    <div class="form-group mx-sm-1 mb-2">           
+      <%= number_field_tag :guest, params[:guest], :placeholder => "no. of guest", :class => "textbox-n" %> 
+    </div> <br>
+
+      <div class="form-group mx-sm-1 mb-2">
+        <%= hidden_field_tag :refrigetator, false %> 
+        REFRIGERATOR : <%= check_box_tag :refrigetator, true %><br>
+      </div>
+      <div class="form-group mx-sm-1 mb-2"> 
+        <%= hidden_field_tag :tv, false %> 
+        TV : <%= check_box_tag :tv, true %><br>
+      </div>
+      <div class="form-group mx-sm-1 mb-2"> 
+        <%= hidden_field_tag :geyser, false %> 
+        GEYSER : <%= check_box_tag :geyser, true %><br>
+      </div>
+      <div class="form-group mx-sm-1 mb-2"> 
+        <%= hidden_field_tag :heater, false %> 
+        HEATER : <%= check_box_tag :heater, true %><br>
+      </div>
+      <div class="form-group mx-sm-1 mb-2"> 
+        <%= hidden_field_tag :ac, false %> 
+        AC : <%= check_box_tag :ac, true %><br>
+      </div>
+
+      <%= submit_tag "Search", :class => "btn btn-primary mb-2 btn-sm" %>
+    <% end %>
+    </div>
+</div>

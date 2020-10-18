@@ -1,0 +1,96 @@
+
+
+<div class="container">
+<% if flash[:booking_status] %>
+          <% flash[:booking_status].each do |msg| %>
+            <div class="alert alert-success" role="alert">
+               <%= msg %>
+            </div>
+          <% end %>              
+      <% end %>
+  <h1 class="text-center">Booking List</h1>
+  <% if current_user.admin %>         
+    <p class="text-center">Emails confirming the booking status will be send to the user when accepted or rejected</p>
+  <%end%>
+  <p class="text-center">Please note :  S: is for single bed room, D: is for double bed room, Su: is for suite room and Dor: is dormitory.</p>
+   
+  <div id="wrap">
+    <div class="container clear-top">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+          <% if current_user.admin %>
+            <th>Email</th>
+          <%end%>
+            <th>Hotel Name</th>
+            <th>Booked on (date)</th>
+            <% if !current_user.admin %>
+            <th>Status</th>
+            <%end%>
+            <th>Guest Name</th>
+            <th>No. of guests</th>
+            <th>No. of rooms</th>
+            <th>Check-in-date</th>
+            <th>Check-out-date</th>
+            
+            <th></th>
+            
+          </tr>
+        </thead>
+        <% @bookings.each do |booking|%>
+          <tr>
+          <% if current_user.admin %>
+            <td><%= booking.user.email %></td>
+          <%end%>
+            <td><%= booking.hotel.name %></td>
+            <td><%= booking.created_at %> </td> 
+             <% if !current_user.admin %>
+              <% if booking.accepted %>
+                  <td class="üser-accept-status">accepted</td>
+              <% else %>
+                  <td class="üser-pending-status">pending</td>
+              <% end %>
+            <%end%>         
+            <td><%= booking.guest_name %> </td>
+            <td><%= booking.no_of_guest %></td>
+
+            <td>
+              <% if booking.single_bed_room > 0 %>
+            S:<%= booking.single_bed_room %> 
+          <% end %>
+          <% if booking.double_bed_room > 0 %>
+            ,D:<%= booking.double_bed_room %> 
+          <% end %>
+          <% if booking.suite_room > 0 %>
+            ,Su:<%= booking.suite_room %> 
+          <% end %>
+          <% if booking.dormitory> 0 %>
+            ,Dor:<%= booking.dormitory %> 
+          <% end %>
+            </td> 
+
+            <td><%= booking.check_in_date %></td>
+            <td><%= booking.check_out_date %></td>
+            
+            <td class="accept-reject"> 
+            <% if current_user.admin %>
+              <%if booking.accepted %>
+                <h6 class="äccepted">Accepted</h6>
+              <%else%>
+                <%= link_to 'Accept', bookings_accept_path(:id => booking.id), :class => "btn btn-success btn-sm accept-button" %> 
+              <%end%>     
+            <% end %>
+              <%= link_to 'Cancel', booking, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %> 
+            </td>
+          </tr>  
+        <%end%>
+      </table>
+      
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  </div>
+</div>
+
+  
+
+

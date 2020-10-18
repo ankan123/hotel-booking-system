@@ -1,0 +1,59 @@
+<div class="container">
+    <% if current_user && current_user.admin %>
+      <%= link_to 'Add New Hotel', new_hotel_path, :class => 'btn btn-primary' %>
+    <% end %>
+
+   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+                                      
+                            <% @hotels.each_with_index do |hotel,idx| %> 
+                            <% if idx === 0 %>
+                              <div class="carousel-item active">
+                                <%= image_tag(hotel.images[0], :class => 'd-block w-100') %>
+                              </div>
+                            <% else %>
+                              <div class="carousel-item">
+                                <%= image_tag(hotel.images[0], :class => 'd-block w-100') %>
+                              </div>
+                              <% end %>
+                            <% end %> 
+                          
+    </div>
+          
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+   </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+<%= render 'hotels/search' %>
+
+ <h2 class="text-center">Hotels list</h2>
+ <div class="row row-cols-4">
+    <% @hotels.each do |hotel| %>
+     <div class="col-sm">
+      <div class="card display-hotel-card"> 
+        <%= image_tag(hotel.images[0], :class => 'card-img-top') %> 
+        <div class="card-body">    
+          <h4 class="card-title text-center"><%= hotel.name %><h4>
+          <h6 class="text-left card-subtitle mb-2 text-muted text-center"><%= hotel.location %></h6>
+          <p class="card-text">Price per room: Rs. <%= hotel.price %></p>
+           <td><%= link_to 'Show', hotel, :class => 'btn btn-success btn-sm' %></td>
+        <% if current_user && current_user.admin %>
+            <td><%= link_to 'Edit', edit_hotel_path(hotel), :class => 'btn btn-primary btn-sm' %></td>
+            <td><%= link_to 'Delete', hotel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %></td>
+        <% end %>
+        </div>
+      </div>
+    </div>
+      
+    <% end %>
+
+</div>
+</div>
+
+
