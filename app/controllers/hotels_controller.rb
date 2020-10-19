@@ -4,8 +4,27 @@ class HotelsController < ApplicationController
   # GET /hotels
   # GET /hotels.json
   def index 
-    @hotels = Hotel.search(params[:city],params[:check_in],params[:check_out],params[:room])
-    
+    #@hotels = Hotel.search(params[:city],params[:check_in],params[:check_out],params[:room])
+    @all_hotels = Hotel.where("location LIKE ?","%#{params[:city]}%")
+
+    filtered_hotel_ids = []
+
+    @all_hotels.each do |hotel|
+
+      booked_single_bed_room = Booking.total_single_bed_room_booked(params[:check_in].to_date,params[:check_out].to_date,hotel.id)
+      booked_double_bed_room = Booking.total_double_bed_room_booked(params[:check_in].to_date,params[:check_out].to_date,hotel.id)
+      booked_suite_room = Booking.total_suite_room_booked(params[:check_in].to_date,params[:check_out].to_date,hotel.id)
+      booked_dormitory = Booking.total_dormitory_booked(params[:check_in].to_date,params[:check_out].to_date,hotel.id)
+
+      if hotel.single_bed_room - booked_single_bed_room > params[:single_bed_room].to_i && hotel.double_bed_room - booked_double_bed_room > params[:double_bed_room].to_i && hotel.suite_room - booked_suite_room > params[:suite_room].to_i && hotel.dormitory - booked_dormitory > params[:dormitory].to_i
+        filtered_hotel_ids.push(hotel.id)
+      end
+    end
+
+    @filtered_hotels = Hotel.find(filtered_hotel_ids)
+    @city = params[:city]
+    @start_date = (params[:check_in]).to_date
+    @end_date = (params[:check_out]).to_date
   end
 
   # GET /hotels/1

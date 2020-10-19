@@ -13,13 +13,6 @@ class Hotel < ApplicationRecord
   validate :image_is_present_and_imagetype_correct
 
 
-  scope :search, -> (city,check_in,check_out,room){
-     if city && room 
-       where(["location LIKE ? AND (single_bed_room > ? OR double_bed_room > ? OR suite_room > ? OR dormitory > ?)","%#{city}%",room,room,room,room])
-     else
-       all
-     end
-  }
 
   def image_is_present_and_imagetype_correct
     if images.attached? == false
