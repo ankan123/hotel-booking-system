@@ -61,6 +61,10 @@
     color: rgb(218, 213, 213) !important;
 }
 
+.search-form,.search-result{
+    background-color: rgb(240, 239, 239) !important;
+}
+
 footer {
     background-color : #003399 ;
     position: absolute;

@@ -3,9 +3,32 @@
   <div class="row">
     <div class="col-md-4">
       <%= render 'hotels/search' %>
+
+      <div class="card search-result">
+        <div class="card-body ">
+          <h4 class="text-center">Search results for: </h4>
+          <p>City: <%= @city %><p> 
+          <p>Check-in date: <%= @start_date %><br>  Check-out date: <%= @end_date %><p> 
+          <div class="row">
+            <div class="col">
+              Single-bed room: <%= @single_bed_room %> 
+            </div>
+            <div class="col">
+              Double-bed room: <%= @double_bed_room %> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Suite room: <%= @suite_room %> 
+            </div>
+            <div class="col">
+              dormitory: <%= @dormitory %> 
+            </div>
+          </div>
+        </div>
+      </div>
      
-      <p>City: <%= @city %><p> 
-      <p>Check-in date: <%= @start_date %><br>  Check-out date: <%= @end_date %><p> 
+
     </div>
     <div class="col-md-8">
         <% @filtered_hotels.each do |hotel| %>

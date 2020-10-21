@@ -5,37 +5,26 @@
       <div class="card-body"> 
 
       <p class="text-center font-weight-bold hotel-name"><%= @hotel.name %></p>
+      <p class="text-center"> <%= @hotel.location %></p>
+      <p class="text-center"><%= @hotel.details %></p>      
+      <p class="text-center">Price per room: Rs. <%= @hotel.price %></p>
 
-            <p class="text-center"> <%= @hotel.location %></p>
-
-            <p class="text-center">
-              <%= @hotel.details %>
-            </p>
-            
-            
-                  <p class="text-center">
-                    Price per room: Rs. <%= @hotel.price %>
-                  </p>
-
-                <p class="text-center font-weight-bold">Facilities available</p>
-                  <div class="display-rooms">
-                      <p class="text-center"><% if @hotel.refrigetator %>refrigerator<%end%></p>
-                      <p class="text-center"><% if @hotel.tv %>TV<%end%></p>
-                      <p class="text-center"><% if @hotel.geyser %>Geyser<%end%></p>
-                      <p class="text-center"><% if @hotel.heater %>Heater<%end%></p>
-                      <p class="text-center"><% if @hotel.ac %>AC<%end%></p>
-                  </div>
-               
-                <div class="display-rooms">
-                  
-                    <% if current_user && current_user.admin %>           
-                      <p class="text-center">single bed rooms : <%= @hotel.single_bed_room %></p>
-                      <p class="text-center">double bed rooms : <%= @hotel.double_bed_room %></p>
-                      <p class="text-center">suite rooms : <%= @hotel.suite_room %></p>
-                      <p class="text-center">dormitories : <%= @hotel.dormitory %></p>
-                    <% end %>
-                  </div>
-               
+      <% if current_user && current_user.admin %>
+        <div class="row">
+          <div class="col">
+            Single-bed room: <%= @hotel.single_bed_room %>
+          </div>
+          <div class="col">
+            Double-bed room: <%= @hotel.double_bed_room %>
+          </div>
+          <div class="col">
+            Suite room: <%= @hotel.suite_room %>
+          </div>
+          <div class="col">
+            Dormitory: <%= @hotel.dormitory %>
+          </div>
+        </div>
+      <% end %>
 
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -76,40 +65,6 @@
       <% else %>
           <h5 class="text-center sign-in-to-book-room">Sign-In to book rooms  <%= link_to 'Sign In', new_user_session_path, :class => 'btn btn-success' %></h5>
       <% end %>
-
-      <div class="container reviews-container">
-        <h2>reviews</h2>
-          <% @hotel.ratings.each do |comment| %>
-
-                  <div class="card review-card">
-                    <div class="card-body"> 
-                         <p>
-                            <strong><%= comment.user.username %></strong>
-                            <strong>Rating: <%= comment.rating %>/5 star</strong>
-
-                        </p>
-                          
-                          <%= comment.comment %>
-                        <br>
-                        <% if current_user && current_user.id === comment.user.id %>
-                          <%= link_to 'Delete', [comment.hotel, comment],
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' } %>
-                        <% end %>
-                    </div>
-                  </div>
-           
-          <% end %>
-      </div>
-      
-    <% if current_user %>
-      <div class="card">
-        <div class="card-body">
-          <h4>Add a review:</h4>
-              <%= render 'hotels/review' %> 
-        </div>
-      </div>
-    <% end %>
                     
       </div>
     </div>

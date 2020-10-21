@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_093734) do
+ActiveRecord::Schema.define(version: 2020_09_15_101258) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,23 +64,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_093734) do
     t.integer "double_bed_room"
     t.integer "suite_room"
     t.integer "dormitory"
-    t.boolean "refrigetator", default: false
-    t.boolean "tv", default: false
-    t.boolean "geyser", default: false
-    t.boolean "heater", default: false
-    t.boolean "ac", default: false
     t.index ["user_id"], name: "index_hotels_on_user_id"
-  end
-
-  create_table "ratings", force: :cascade do |t|
-    t.integer "rating"
-    t.string "comment"
-    t.integer "user_id", null: false
-    t.integer "hotel_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["hotel_id"], name: "index_ratings_on_hotel_id"
-    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,6 +92,4 @@ ActiveRecord::Schema.define(version: 2020_10_01_093734) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "users"
   add_foreign_key "hotels", "users"
-  add_foreign_key "ratings", "hotels"
-  add_foreign_key "ratings", "users"
 end

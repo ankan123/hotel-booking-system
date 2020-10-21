@@ -25,6 +25,10 @@ class HotelsController < ApplicationController
     @city = params[:city]
     @start_date = (params[:check_in]).to_date
     @end_date = (params[:check_out]).to_date
+    @single_bed_room = params[:single_bed_room]
+    @double_bed_room = params[:double_bed_room]
+    @suite_room = params[:suite_room]
+    @dormitory = params[:dormitory]
   end
 
   # GET /hotels/1

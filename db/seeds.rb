@@ -84,8 +84,6 @@
    Booking.create(user_id: 2, guest_name: "buzz hardy", no_of_guest: 4, check_in_date: "2020-10-22", check_out_date: "2020-10-27",  hotel_id: 1, single_bed_room: 2, double_bed_room: 2, suite_room: 0, dormitory: 0, accepted: true)
    Booking.create(user_id: 2, guest_name: "jeff", no_of_guest: 4, check_in_date: "2020-10-22", check_out_date: "2020-10-28",  hotel_id: 1, single_bed_room: 2, double_bed_room: 2, suite_room: 0, dormitory: 0, accepted: true)
    Booking.create(user_id: 2, guest_name: "james", no_of_guest: 4, check_in_date: "2020-10-23", check_out_date: "2020-10-27",  hotel_id: 1, single_bed_room: 2, double_bed_room: 2, suite_room: 0, dormitory: 0, accepted: true)
-   Booking.create(user_id: 2, guest_name: "jeff hardy", no_of_guest: 4, check_in_date: "2020-10-25", check_out_date: "2020-10-27",  hotel_id: 1, single_bed_room: 2, double_bed_room: 2, suite_room: 0, dormitory: 0, accepted: true)
-   Booking.create(user_id: 2, guest_name: "jeff hardy", no_of_guest: 4, check_in_date: "2020-10-23", check_out_date: "2020-10-29",  hotel_id: 1, single_bed_room: 2, double_bed_room: 1, suite_room: 1, dormitory: 0, accepted: true)
    
    Booking.create(user_id: 3, guest_name: "rohit", no_of_guest: 5, check_in_date: "2020-10-16", check_out_date: "2020-10-19",  hotel_id: 5, single_bed_room: 2, double_bed_room: 1, suite_room: 0, dormitory: 0, accepted: true)
    Booking.create(user_id: 3, guest_name: "abdul", no_of_guest: 6, check_in_date: "2020-10-20", check_out_date: "2020-10-25",  hotel_id: 6, single_bed_room: 2, double_bed_room: 2, suite_room: 0, dormitory: 0, accepted: true)

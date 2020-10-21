@@ -16,11 +16,11 @@
                   </div> 
                   <div class="form-group mx-sm-1 mb-2"> 
                     Check-in :          
-                    <%= date_field_tag :check_in, params[:check_in], :placeholder => "Check-In" %> 
+                    <%= date_field_tag :check_in, params[:check_in], :required => true %> 
                   </div>                
                   <div class="form-group mx-sm-1 mb-2">           
                     Check-out :
-                    <%= date_field_tag :check_out, params[:check_out], :placeholder => "Check-Out" %> 
+                    <%= date_field_tag :check_out, params[:check_out], :required => true %> 
                   </div>
                   <%= submit_tag "Check Availability", :class => "btn btn-primary mb-2 btn-sm" %>
                 <% end %> 

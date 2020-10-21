@@ -67,6 +67,19 @@ class BookingsController < ApplicationController
       @suite_room_left = hotel.suite_room - booked_suite_room
       @dormitory_left = hotel.dormitory - booked_dormitory_room
 
+      if @single_room_left < 0
+        @single_room_left = 0
+      end
+      if @double_room_left < 0
+        @double_room_left = 0
+      end
+      if @suite_room_left < 0
+        @suite_room_left = 0
+      end
+      if @dormitory_left < 0
+        @dormitory_left = 0
+      end
+
       @available = true
 
       if @single_room_left === 0 && @double_room_left=== 0 && @suite_room_left === 0 && @dormitory_left === 0
@@ -80,7 +93,6 @@ class BookingsController < ApplicationController
     def last_date_greater_than_start_date_and_smaller_six_month 
       @hotel = Hotel.find(params[:hotel_id])
 
-    
       if Date.today > params[:check_in].to_date
         flash[:dates_errors] = @hotel.errors.add(:check_in_date, "check-in date should be greater or equal to today's date")
         redirect_to hotel_path(:id => @hotel.id)
