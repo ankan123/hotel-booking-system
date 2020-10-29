@@ -188,6 +188,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    simple_calendar (2.4.1)
+      rails (>= 3.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -208,6 +210,7 @@ GEM
       tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    watu_table_builder (0.3.0)
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -224,9 +227,6 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.0)
-    will_paginate-bootstrap (1.0.2)
-      will_paginate (>= 3.0.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.0)
@@ -251,14 +251,14 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.2)
   sass-rails (>= 6)
   selenium-webdriver
+  simple_calendar (~> 2.0)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
+  watu_table_builder
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
-  will_paginate (~> 3.1, >= 3.1.6)
-  will_paginate-bootstrap (~> 1.0, >= 1.0.2)
 
 RUBY VERSION
    ruby 2.6.5p114

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :bookings
 
   get 'booking/bookinglist', to: "bookings#bookinglist"
+  get 'booking/calender', to: "bookings#calender"
 
 
   resources :pages

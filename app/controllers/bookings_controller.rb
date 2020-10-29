@@ -9,6 +9,15 @@ class BookingsController < ApplicationController
         end
     end
 
+    def calender
+      if current_user.admin
+        @bookings = Booking.all
+      else
+        @bookings = Booking.where('user_id=?',current_user)
+      end
+      
+    end
+
     def accept
       @booking = Booking.find(params[:id])
       BookingstatusMailer.accept_booking(@booking).deliver 
@@ -57,6 +66,9 @@ class BookingsController < ApplicationController
 
     def check_room_availability  
       hotel = Hotel.find(params[:hotel_id])
+      @hotel_name = hotel.name 
+      @days = (params[:check_out].to_date-params[:check_in].to_date).to_i
+      
       booked_single_room = Booking.total_single_bed_room_booked(params[:check_in],params[:check_out],params[:hotel_id])
       booked_double_room = Booking.total_double_bed_room_booked(params[:check_in],params[:check_out],params[:hotel_id])
       booked_suite_room = Booking.total_suite_room_booked(params[:check_in],params[:check_out],params[:hotel_id])
@@ -85,9 +97,7 @@ class BookingsController < ApplicationController
       if @single_room_left === 0 && @double_room_left=== 0 && @suite_room_left === 0 && @dormitory_left === 0
         @available = false
       end
-      
-      @hotel_name = hotel.name 
-      @days = (params[:check_out].to_date-params[:check_in].to_date).to_i
+  
     end
 
     def last_date_greater_than_start_date_and_smaller_six_month 

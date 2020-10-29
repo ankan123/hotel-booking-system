@@ -34,7 +34,10 @@ class HotelsController < ApplicationController
   # GET /hotels/1
   # GET /hotels/1.json
   def show
-  
+    @hash = Gmaps4rails.build_markers(@hotel) do |hotel, marker|
+      marker.lat hotel.latitude
+      marker.lng hotel.longitude
+    end
   end
   
 

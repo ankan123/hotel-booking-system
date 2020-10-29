@@ -39,6 +39,14 @@
             </div>
           </div>
 
+          <% if @booking.accepted %>
+            <p>Status: Accepted</p>
+            the booking is confirmed. Enjoy your stay!!!
+          <% else %>
+            <p>Status: pending</p>
+            the booking is not yet confirmed 
+          <% end %>
+
           <%= link_to 'Exit', '/' , :class => 'btn btn-success btn-sm' %>
 
     </div>
